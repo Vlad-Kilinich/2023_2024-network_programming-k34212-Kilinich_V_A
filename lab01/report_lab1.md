@@ -69,14 +69,14 @@ apt update && apt -y install openvpn-as
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/7.jpg?raw=true" width="600" heidth = '500'/>  
 </p>  
 
-
-
+Далее создаем interface ovpn-client и настраиваем как на фото, после настройки интерфейса проверяем сеть, пропинговав сервер по внутреннему ip-адресу  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/8.jpg?raw=true" width="600" heidth = '500'/>  
+</p>  
 
 ---
-# Созданный тунель EoMPLS связал порты eth2 на R01.NY и eth4 на R01.SPB.
-Для проверки связанности были пропингованы компьютеры:
-![image](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/10.PNG?raw=true)
-![image](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/11.PNG?raw=true)
+# Вывод
+В результате выполнения лабораторной работы было выполнено развертывание виртуальной машины на платформе Yandex Cloud. Также установлен CHR в VirtualBox и настроен VPN тунель между VPN server и CHR.
 
 
 

@@ -40,13 +40,19 @@ apt update && apt -y install openvpn-as
 ```  
 После выполнения команд выводится сообщение с логином и паролем для подключения к OpenVPN Access Server по следующей ссылке: https://84.201.177.192:943/admin. Сразу указываем протокол TCP, и проверяем что IP-адрес указан верно.  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="600" heidth = 500/>   
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="700" heidth = 600/>   
 </p>
-В настройках VPN отключаем TLS.  
+В настройках CONFIGURATION -> Advanced VPN отключаем TLS.  
+  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/4.PNG?raw=true" width="600" heidth = '500'/>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/4.PNG?raw=true" width="700" heidth = '600'/>  
 </p>
 
+Далее в User managment -> User Permissions создаем пользователя, а в User Profiles создаем новый профайл. После создания профайла скачивается файл с расширением ovpn.
+
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/5.PNG?raw=true" width="700" heidth = '600'/>  
+</p>
 
 ---
 # Созданный тунель EoMPLS связал порты eth2 на R01.NY и eth4 на R01.SPB.

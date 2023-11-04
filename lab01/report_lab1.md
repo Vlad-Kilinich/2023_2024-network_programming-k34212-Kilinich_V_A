@@ -38,14 +38,15 @@ wget https://as-repository.openvpn.net/as-repo-public.asc -qO /etc/apt/trusted.g
 echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/as-repository.asc] http://as-repository.openvpn.net/as/debian jammy main">/etc/apt/sources.list.d/openvpn-as-repo.list
 apt update && apt -y install openvpn-as
 ```  
-После выполнения команд выводится сообщение с логином и паролем для подключения к OpenVPN Access Server по следующей ссылке: https://84.201.177.192:943/admin. Сразу указываем протокол TCP, и проверяем что IP-адрес указан верно.    
+После выполнения команд выводится сообщение с логином и паролем для подключения к OpenVPN Access Server по следующей ссылке: https://84.201.177.192:943/admin. Сразу указываем протокол TCP, и проверяем что IP-адрес указан верно.      
 <p align="center">
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="800" heidth = 700/>   
 </p>  
+  
 Зарегестрировавшись в сервесе OpenVPN копируем ключ активации и вставляем его в CONFIGURATION -> Activation  
-<p align="center">
+<p align="center">  
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/3.3.PNG?raw=true" width="800" heidth = '700'/>  
-</p>  
+</p>
 
 В настройках CONFIGURATION -> Advanced VPN отключаем TLS.  
 <p align="center">
@@ -60,8 +61,14 @@ apt update && apt -y install openvpn-as
 # Настройка CHR  
 Скачиваем образ  .vdi CHR c официального сайта Mikrotik. Создаем виртуальную машину, используя Virtualbox. Настраиваем тип подключения - Сетевой мост.  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/6.PNG?raw=true" width="800" heidth = '700'/>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/6.PNG?raw=true" width="600" heidth = '500'/>  
 </p>  
+
+Подключаемся к машине через WinBox и загружаем ранее полученный .ovpn файл  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/7.jpg?raw=true" width="600" heidth = '500'/>  
+</p>  
+
 
 
 

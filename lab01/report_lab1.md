@@ -39,9 +39,13 @@ echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/as-repository.asc] http:/
 apt update && apt -y install openvpn-as
 ```  
 После выполнения команд выводится сообщение с логином и паролем для подключения к OpenVPN Access Server по следующей ссылке: https://84.201.177.192:943/admin. Сразу указываем протокол TCP, и проверяем что IP-адрес указан верно.  
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="600" heidth = 500 align-items='center'/>   
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="600" heidth = 500/>   
+</p>
 В настройках VPN отключаем TLS.  
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/4.PNG?raw=true" width="600" heidth = '500' align='center'/>  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/4.PNG?raw=true" width="600" heidth = '500'/>  
+</p>
 
 
 ---

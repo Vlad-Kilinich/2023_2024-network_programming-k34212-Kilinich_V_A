@@ -41,7 +41,7 @@ apt update && apt -y install openvpn-as
 После выполнения команд выводится сообщение с логином и паролем для подключения к OpenVPN Access Server
 по следующей ссылке: https://84.201.177.192:943/admin.
 ![image](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0)
-<img src="https://user-images.githubusercontent.com/link-to-your-image.png" width="600" heidth = 500 />
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/0300353c-0afd-4246-a51e-699bd748bcb0" width="600" heidth = 500 />
 
 ---
 # Созданный тунель EoMPLS связал порты eth2 на R01.NY и eth4 на R01.SPB.

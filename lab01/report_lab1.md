@@ -1,35 +1,34 @@
-# Отчёт по лабораторной работе 3 "Эмуляция распределенной корпоративной сети связи, настройка OSPF и MPLS, организация первого EoMPLS""
+# Отчёт по лабораторной работе 1 "Установка CHR и Ansible, настройка VPN""
 ---
 University: [ITMO University](https://itmo.ru/ru/)  
-Faculty: [FICT](https://fict.itmo.ru)  
-Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)  
-Year: 2022/2023  
-Group: K33212  
+Faculty: [FICT](https://fict.itmo.ru)
+Course: [Network programming](https://github.com/itmo-ict-faculty/network-programming)
+Year: 2023/2024  
+Group: K34212  
 Author: Kilinich Vladislav Aleksandrovich  
-Lab: Lab3  
-Date of create: 12.12.2022  
-Date of finished: 16.12.2022  
+Lab: Lab1  
+Date of create: 04.11.2023  
+Date of finished: - 
 ---
 # Ход работы
 ---
-1) Развертывание контейнера:
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/Снимок.PNG?raw=true)
-# Найстройка всех устройств
-2) Конфигурация настройки OSPF, MPLS и EoMPLS RO1.NY  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/1.PNG?raw=true)  
-3) Конфигурация настройки OSPF, MPLS RO1.LND  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/2.PNG?raw=true)  
-4) Конфигурация настройки OSPF, MPLS RO1.HKL
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/4.PNG?raw=true)
-5) Конфигурация настройки OSPF, MPLS и EoMPLS RO1.SPB  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/SPB.PNG?raw=true)  
-6) Конфигурация настройки OSPF, MPLS RO1.MSK  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/5.PNG?raw=true)  
-7) Конфигурация настройки OSPF, MPLS RO1.LBN  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/3.PNG?raw=true)  
-8) Добавление интерфейса в SGI Prism и PC1  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/8.PNG?raw=true)  
-![avatar](https://github.com/Vladkilinichh/2022_2023-introduction_in_routing-k33212-Kilinich-Vladislav/blob/main/lab3/images/9.PNG?raw=true)  
+Цель работы: развертывание виртуальной машины на базе платформы Yandex Cloud с установленной системой контроля конфигураций Ansible и установка CHR в VirtualBox.  
+
+1) Для создания VPN сервера была выбрана платформа cloud.yandex. Далее была создана ВМ с ОС ubuntu:
+![avatar](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/1.PNG?raw=true)
+Для подключения по ssh пишем
+```
+ssh ubuntu@84.201.177.192
+```
+Далее устанавливаем python3
+```
+sudo apt install python3-pip
+```
+И Ansible:
+```
+sudo pip3 install ansible
+```
+
 ---
 # Таблицы MPLS маршрутов на всех роутерах
 ---

@@ -73,7 +73,7 @@ ansible_ssh_pass=123
       debug:
         var: "output_ospf"
 ```
-# Запуск playbook и проверка результатов    
+# Запуск playbook и вывод результатов    
 После запуска файла получаем следующий результат:  
 
 <p align="center">
@@ -88,6 +88,23 @@ ansible_ssh_pass=123
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/ec4a3db3-78b2-4b1f-857d-cc4223fb05d4" width="800" >  
 </p>  
   
+# Проверка CHR и связанности   
+
+Вводим команду export на каждом CHR:  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="600" heidth = '500'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="600" heidth = '500'>  
+</p>  
+
+NTP client:  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/6.jpg?raw=true" width="600" heidth = '500'>  
+</p>
+
+ping 
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/7448e018-c2f1-41d9-9348-98dc98a903e3" width="600" heidth = '500'>  
+</p>
 
 ---
 # Вывод

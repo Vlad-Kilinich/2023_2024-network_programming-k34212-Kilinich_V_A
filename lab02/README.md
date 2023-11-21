@@ -93,7 +93,8 @@ ansible_ssh_pass=123
 # Проверка CHR и связанности   
 
 Вводим команду export на каждом CHR:  
-Полная конфигурация файлов: [chr1](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/chr1_config.txt), [chr2](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/chr2_config.txt).
+Полная конфигурация файлов: [chr1](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/chr1_config.txt), [chr2](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/chr2_config.txt).  
+
 <p align="center">
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="400" heidth = '350'>  
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="460" heidth = '350'>  

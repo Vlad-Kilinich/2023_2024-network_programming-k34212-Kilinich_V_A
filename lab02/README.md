@@ -94,8 +94,8 @@ ansible_ssh_pass=123
 
 Вводим команду export на каждом CHR:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="350" heidth = '350'>  
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="450" heidth = '350'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="400" heidth = '350'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="460" heidth = '350'>  
 </p>  
 
 NTP client print на одном из CHR:  

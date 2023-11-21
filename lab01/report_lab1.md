@@ -8,7 +8,7 @@ Group: K34212
 Author: Kilinich Vladislav Aleksandrovich  
 Lab: Lab1  
 Date of create: 04.11.2023  
-Date of finished: - 
+Date of finished: 16.11.2023 
 ---
 # Ход работы
 ---

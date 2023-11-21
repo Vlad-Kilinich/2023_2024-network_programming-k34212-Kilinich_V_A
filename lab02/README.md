@@ -15,7 +15,7 @@ Date of finished: -
 Цель работы: С помощью Ansible настроить несколько сетевых устройств и собрать информацию о них. Правильно собрать файл Inventory.
 
 # Развертывание 2 CHR  
-Чтобы добавить второй образ VDI необходимо было поменять UUID образа  
+Чтобы добавить новый образ VDI той же версии необходимо было поменять UUID образа  
 ```  
 VBoxManage internalcommands sethduuid "/home/user/VirtualBox /etc/CHR-11_4.vdi"  
 ```  
@@ -77,37 +77,17 @@ ansible_ssh_pass=123
 После запуска файла получаем следующий результат:  
 
 <p align="center">
-<img src="![image](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/dfcf35b6-be6d-4d6b-be8f-acec430261ee)" width="800" heidth = 700>   
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/dfcf35b6-be6d-4d6b-be8f-acec430261ee" width="800" heidth = 700>   
 </p>  
   
 <p align="center">  
-<img src="![image](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/5a8c149d-37a7-46f8-b664-09b1d7f38164)" width="800" heidth = '700'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/5a8c149d-37a7-46f8-b664-09b1d7f38164" width="800" heidth = '700'>  
 </p>  
  
 <p align="center">
-<img src="![image](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/ec4a3db3-78b2-4b1f-857d-cc4223fb05d4)" width="800" >  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/assets/63118851/ec4a3db3-78b2-4b1f-857d-cc4223fb05d4" width="800" >  
 </p>  
   
-Далее в User management -> User Permissions создаем пользователя, а в User Profiles создаем новый профайл. После создания профайла скачивается файл с расширением ovpn.  
-<p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/5.PNG?raw=true" width="800" heidth = '700'/>  
-</p>  
-
-# Настройка CHR  
-Скачиваем образ  .vdi CHR c официального сайта Mikrotik. Создаем виртуальную машину, используя Virtualbox. Настраиваем тип подключения - Сетевой мост.  
-<p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/6.PNG?raw=true" width="600" heidth = '500'/>  
-</p>  
-
-Подключаемся к машине через WinBox и загружаем ранее полученный .ovpn файл  
-<p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/7.jpg?raw=true" width="600" heidth = '500'/>  
-</p>  
-
-Далее создаем interface ovpn-client и настраиваем как на фото, после настройки интерфейса проверяем сеть, пропинговав сервер по внутреннему ip-адресу  
-<p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab01/images/8.jpg?raw=true" width="600" heidth = '500'/>  
-</p>  
 
 ---
 # Вывод

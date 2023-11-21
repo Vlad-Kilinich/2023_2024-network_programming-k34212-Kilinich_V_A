@@ -94,8 +94,8 @@ ansible_ssh_pass=123
 
 Вводим команду export на каждом CHR:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="450" heidth = '350'>  
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="450" heidth = '400'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/4.jpg?raw=true" width="350" heidth = '350'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/3.jpg?raw=true" width="450" heidth = '350'>  
 </p>  
 
 NTP client print на одном из CHR:  
@@ -110,9 +110,10 @@ NTP client print на одном из CHR:
 
 # Схема сети   
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/12.drawio.png?raw=true" width="600" heidth = '500'>  
-</p>
----
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/12.drawio.png?raw=true" width="400" heidth = '300'>  
+</p>  
+
+---  
 # Вывод
 В ходе лабораторной работы были настроены CHR с помощью ansible. Были созданы два файла: inventory-файл и playbook. На роутерах были настроены: логин/пароль для нового пользователя, NTP client, ospf с указанием router id, а также были собраны данные настройки роутеров.
 

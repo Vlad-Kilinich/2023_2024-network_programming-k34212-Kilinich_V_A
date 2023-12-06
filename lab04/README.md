@@ -91,9 +91,12 @@ control MyDeparser(packet_out packet, in headers hdr) {
 </p>
 
 ### Задание Implementing Basic Tunneling  
-Во второй части работы нужно было добавить поддержку базового туннелирования. Использоваться будет следующая топология:  
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/topo2.png)  
-Для этого задания также предоставлен файл с ключевыми элементами, содержащий добавленные в прошлом задании элементы. В начале кода была добавлена новая константа для туннелирования и новый тип заголовка. Парсер был дополнен функцией извлеченя заголовка mytunnel:  
+Во второй части работы нужно было добавить поддержку базового туннелирования. топология сети:  
+<p align="center">
+<img src="https://github.com/p4lang/tutorials/blob/master/exercises/basic_tunnel/topo.png?raw=true" width="600" heidth = '350'>  
+</p>  
+Заходим в каталог p4\tutorials\exercises\basic_tunnel и исправляем файл basic_tunnel.p4. Исправляем парсер:  
+
 ```
 parser MyParser(packet_in packet,
                 out headers hdr,
@@ -128,13 +131,13 @@ parser MyParser(packet_in packet,
 
 }
 ```
-Также необходимо было написать action, устанавливающий выходной порт:
+Устанавливаем выходной порт с помощью action:
 ```
     action myTunnel_forward(egressSpec_t port) {
         standard_metadata.egress_spec = port;
     }
 ```
-Далее была определена таблица , аналогичная ipv4_lpm, но вызывающая действие myTunnel_forward вместо ipv4_forward:
+Переадрисация туннелирования:
 ```
     table myTunnel_exact {
         key = {
@@ -148,7 +151,7 @@ parser MyParser(packet_in packet,
         default_action = drop();
     }
 ```
-Также было прописано условие проверки, чтобы в случае недопустимого заголовка туннеля, пакеты были отправлены без использования туннеля:
+Проверка валидности заголовка myTunnel:
 ```
     apply {
         if (hdr.ipv4.isValid() && !hdr.myTunnel.isValid()) {
@@ -162,7 +165,7 @@ parser MyParser(packet_in packet,
         }
     }
 ```
-Далее был дополнен депарсер заголовком туннеля:
+Исправляем депарсер:
 ```
 control MyDeparser(packet_out packet, in headers hdr) {
     apply {
@@ -172,17 +175,27 @@ control MyDeparser(packet_out packet, in headers hdr) {
     }
 }
 ```  
-Итоговый файл: [basic_tunnel.p4](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/basic_tunnel.p4).  
-Снова был запущен mininet (перед этим предыдущий экземпляр был остновлен командой ```make stop```). Для тестирования были открыты терминалы для h1 и h2, на втором был запущен сервер командой ```./receive.py```. Сначала было проведено тестирование без туннелирования, с h1 было отправлено сообщение на h2:  
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/test_without_tunnel.jpg)  
-Далее было проведено тестирование отправки сообщения с помощью туннелирования. Теперь можно увидеть заголовок туннеля, вместо ранее присутствующего TCP:
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/test_with_tunnel.jpg)  
-С h1 снова было отправлено сообщение, но уже на адрес h3. Сообщение также дошло на h2, так как проверка IP-адреса при использовании туннеля не осуществилась:
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab4/imgs/test_through_h3.jpg)  
-### Вывод  
-В ходе лабораторной работы были выполнены два задания для ознакомления с языком программирования P4: реализация алгоритмов переадресации и туннелирования в тестовой среде.
+Итоговый файл: [basic_tunnel.p4](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/basic_tunnel.p4).  
 
+Запускаем mininet. Для тестирования были открыты терминалы для h1 и h2,  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/6.6.jpg?raw=true" width="600" heidth = '350'>  
+</p>  
+
+На h2 запускаем ./receive.py. Сначала проводим проверку без туннелирования:  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/7.7.jpg?raw=true">  
+</p>  
+Проверка отправки сообщения с помощью туннелирования. Теперь видно заголовок туннеля:
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/8.8.jpg?raw=true">  
+</p>
+
+Проверка отправки сообщения с помощью туннелирования на адрес h3. Сообщение дошло на h2:
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/9.9.jpg?raw=true">  
+</p>
 
 ---  
 ### Вывод  
-В ходе лабораторной работы была собрана информация об устройствах и сохранена в отдельном файле с помощью Ansible и Netbox, а также была произведена настройка CHR на основе собранных данных.
+В ходе лабораторной работы были выполнены задания для ознакомления с языком программирования P4: реализация алгоритмов переадресации и туннелирования в тестовой среде.

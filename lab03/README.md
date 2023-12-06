@@ -1,7 +1,7 @@
 # Отчёт по лабораторной работе 3 "Развертывание Netbox, сеть связи как источник правды в системе технического учета Netbox"
 ---
 University: [ITMO University](https://itmo.ru/ru/)  
-Faculty: [FICT](https://fict.itmo.ru)
+Faculty: [FICT](https://fict.itmo.ru)  
 Course: [Network programming](https://github.com/itmo-ict-faculty/network-programming)
 Year: 2023/2024  
 Group: K34212  

@@ -15,48 +15,55 @@ Date of finished: -
 Цель работы:  
 С помощью Ansible и Netbox собрать всю возможную информацию об устройствах и сохранить их в отдельном файле.
 
-# Развертывание 2 CHR  
-Чтобы добавить новый образ VDI той же версии необходимо было поменять UUID образа  
-```  
-VBoxManage internalcommands sethduuid "/home/user/VirtualBox /etc/CHR-11_4.vdi"  
-```
-На виртуальной машине Ubuntu был поднят Netbox. Для этого сначала был установлен и настроен PostgreSQL с помощью следующи команд:  
+###Ход работы  
+Для того, чтобы поднять Netbox сначала был установлен и настроен PostgreSQL:  
 ```
 sudo apt install postgresql libpq-dev -y
-sudo systemctl start postgresql
-sudo systemctl enable postgresql
-sudo passwd postgres
-su - postgres
-psql
+```
+Создание БД и юзера:
+```
 CREATE DATABASE netbox;
 CREATE USER netbox WITH ENCRYPTED password '123';
 GRANT ALL PRIVILEGES ON DATABASE netbox to netbox;
-```  
-Далее был установлен Redis с помощью команды:
+```
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/1.jpg?raw=true">  
+</p>   
+
+Далее устанавливаемн Redis с помощью команды:
 ```
 sudo apt install -y redis-server
 ```
-После проделанных шагов был уже установлен и настроен сам Netbox:
+
+Установка и создание каталога NetBox:
 ```
 sudo apt install python3 python3-pip python3-venv python3-dev build-essential libxml2-dev libxslt1-dev libffi-dev libpq-dev libssl-dev zlib1g-dev git -y
-sudo pip3 install --upgrade pip
+sudo pip3 install --upgrade pip  
+
 sudo mkdir -p /opt/netbox/ && cd /opt/netbox/
 sudo git clone -b master https://github.com/netbox-community/netbox.git .
+```
+Создание юзера netbox и настройка:  
+```
 sudo adduser --system --group netbox
 sudo chown --recursive netbox /opt/netbox/netbox/media/
-cd /opt/netbox/netbox/netbox/
+```  
+
+Копируем конфигурационный файл и Генерируем ключ:  
+```
 sudo cp configuration.example.py configuration.py
 sudo ln -s /usr/bin/python3 /usr/bin/python
 sudo /opt/netbox/netbox/generate_secret_key.py
-```  
-Сгенерированный случайный код был скопирован для дальнейшего использования в конфигурационном файле. В данный файл был также добавлен ранее созданный пользователь netbox и его пароль.  
+```
+
+Сгенерированный ключ для дальнейшего использования в конфигурационном файле. В данный файл был также добавлен ранее созданный пользователь netbox и его пароль.  
 Для дальнейшей настройки были выполнены следующие команды:  
 ```
 sudo /opt/netbox/upgrade.sh
 source /opt/netbox/venv/bin/activate
 cd /opt/netbox/netbox
-python3 manage.py createsuperuser
-sudo reboot
+python3 manage.py createsuperuser  
+
 sudo cp /opt/netbox/contrib/gunicorn.py /opt/netbox/gunicorn.py
 sudo cp /opt/netbox/contrib/*.service /etc/systemd/system/
 sudo systemctl daemon-reload

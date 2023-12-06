@@ -17,11 +17,10 @@ Date of finished: -
 ### Ход работы  
 Клонируем репозиторий https://github.com/p4lang/tutorials. Далее в папке vm-ubuntu-20.04 была развернута тестовая среда командой ```vagrant up```. В результате установки была создана ВМ с двумя аккаунтами vagrant и p4, заходим на p4:  
 
-
 ### Задание Implementing Basic Forwarding  
 В первой части работы нужно было написать программу на P4, которая реализует базовую переадресацию с использованием следующей топологии:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/1.1.jpg?raw=true" width="500" heidth = '350'>  
+<img src="https://github.com/p4lang/tutorials/blob/master/exercises/basic/pod-topo/pod-topo.png?raw=true" width="600" heidth = '350'>  
 </p>
 
 Заходим в каталог p4\tutorials\exercises\basiс и запускаем mininet командой  

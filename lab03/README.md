@@ -56,20 +56,46 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 sudo /opt/netbox/netbox/generate_secret_key.py
 ```
 
-Сгенерированный ключ для дальнейшего использования в конфигурационном файле. В данный файл был также добавлен ранее созданный пользователь netbox и его пароль.  
-Для дальнейшей настройки были выполнены следующие команды:  
+Далее настроим конфигурационный файл:  
+```
+ALLOWED_HOSTS = ['*']
+DATABASE = {
+    'NAME': 'netbox',               
+    'USER': 'netbox',               
+    'PASSWORD': '123', 
+    'HOST': 'localhost',           
+    'PORT': '',                     
+    'CONN_MAX_AGE': 300,          
+}
+
+SECRET_KEY = 'ключ'
+```
+
+Для дальнейшей настройки были выполнены следующие команды:    
+Создание виртуальной среды и настройка пакетов, также создаем юзера, чтобы заходить через него в NetBox  
 ```
 sudo /opt/netbox/upgrade.sh
 source /opt/netbox/venv/bin/activate
 cd /opt/netbox/netbox
 python3 manage.py createsuperuser  
+```
 
+Установка Gunicorn  
+```
 sudo cp /opt/netbox/contrib/gunicorn.py /opt/netbox/gunicorn.py
 sudo cp /opt/netbox/contrib/*.service /etc/systemd/system/
 sudo systemctl daemon-reload
+```
+
+Start netbox и проверка:  
+```
 sudo systemctl start netbox netbox-rq
 sudo systemctl enable netbox netbox-rq
-```  
+```
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/2.jpg?raw=true">  
+</p>  
+
 Также был настроен веб-сервер Nginx для доступа к Netbox через браузер:
 ```
 sudo apt install -y nginx

@@ -96,18 +96,14 @@ sudo systemctl enable netbox netbox-rq
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/2.jpg?raw=true">  
 </p>  
 
-Также был настроен веб-сервер Nginx для доступа к Netbox через браузер:
+Также был настроен веб-сервер Nginx для доступа к Netbox через браузер:  
 ```
 sudo apt install -y nginx
 sudo cp /opt/netbox/contrib/nginx.conf /etc/nginx/sites-available/netbox
-```
-Файл netbox был отредактирован так, чтобы в нем был белый IP-адрес ВМ и порт 8080 (порт 80 уже был занят OpenVPN).  
-Для того, чтобы изменения вступили в силу, были выполнены следующие команды:  
-```
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/netbox /etc/nginx/sites-enabled/netbox
-sudo systemctl restart nginx
 ```
+---  
 Настроить Netbox можно в браузере по указанному адресу и номеру порта, также необходимо указать имя созданного суперпользователя и пароль.  
 В веб-интерфейсе был создан сайт, мануфактура, тип устройства, функция устройства, а далее само устройство – chr1 и CHR2. Для указания IP-адресов устройств необходимо было создать интерфейсы и IP-адреса. Занесенные в Netbox устройства:  
 ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/Netbox_devices.jpeg)  

@@ -19,10 +19,10 @@ Date of finished: -
 Клонируем репозиторий https://github.com/p4lang/tutorials. Далее в папке vm-ubuntu-20.04 была развернута тестовая среда командой ```vagrant up```. В результате установки была создана ВМ с двумя аккаунтами vagrant и p4, заходим на p4:  
 
 
-### Implementing Basic Forwarding  
+### Задание Implementing Basic Forwarding  
 В первой части работы нужно было написать программу на P4, которая реализует базовую переадресацию с использованием следующей топологии:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/1.1.jpg?raw=true" width="500" heidth = '400'>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/1.1.jpg?raw=true" width="500" heidth = '350'>  
 </p>
 
 Заходим в каталог p4\tutorials\exercises\basiс и запускаем mininet командой  
@@ -89,7 +89,7 @@ control MyDeparser(packet_out packet, in headers hdr) {
 Итоговый файл: [basic.p4](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/basic.p4).  
 Проверки работоспособности: снова запускаем mininet. На этот раз все работает:
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/5.5.jpg?raw=true">  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab04/images/5.5.jpg?raw=true" width="500" heidth = '350'>  
 </p>
 
 ### Задание Implementing Basic Tunneling  

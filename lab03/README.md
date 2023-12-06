@@ -15,7 +15,7 @@ Date of finished: -
 Цель работы:  
 С помощью Ansible и Netbox собрать всю возможную информацию об устройствах и сохранить их в отдельном файле.
 
-###Ход работы  
+### Ход работы  
 Для того, чтобы поднять Netbox сначала был установлен и настроен PostgreSQL:  
 ```
 sudo apt install postgresql libpq-dev -y
@@ -104,7 +104,7 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/netbox /etc/nginx/sites-enabled/netbox
 ```
 ---  
-###Настройка Netbox в браузере.  
+### Настройка Netbox в браузере.  
 <p align="center">
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/4.jpg?raw=true">  
 </p>  
@@ -142,7 +142,8 @@ interfaces: True
 ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
 ```
 
-Сценарий для настройки CHR на основе Netbox. В полученный файл добавляем переменные для подключения к устройствам. 
+### Сценарий для настройки CHR на основе Netbox. 
+В полученный файл добавляем переменные для подключения к устройствам. 
 Измененный файл: [inventory.yml](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/nb_inventory.yml).  
 <p align="center">
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/13.PNG?raw=true">  
@@ -169,6 +170,7 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
 <img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/7.jpg?raw=true">  
 </p> 
 
+### Сбор серийных номеров CHR
 Измененный playbok для сбора серийных номеров устройств и внесении их в Netbox
 ```
 - name: Serial Numbers
@@ -191,8 +193,8 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
 ```
 После запуска playbook в Netbox можно увидеть добавленный серийный номер для каждого CHR:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/10.jpg?raw=true"> 
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/11.jpg?raw=true">  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/10.jpg?raw=true" width="400" heidth = '350'> 
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/11.jpg?raw=true" width="400" heidth = '350'>  
 </p>
 
 ---  

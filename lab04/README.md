@@ -6,7 +6,7 @@ Course: [Network programming](https://github.com/itmo-ict-faculty/network-progra
 Year: 2023/2024  
 Group: K34212  
 Author: Kilinich Vladislav Aleksandrovich  
-Lab: Lab4 
+Lab: Lab4  
 Date of create: 06.12.2023  
 Date of finished: -
 ---

@@ -104,28 +104,51 @@ sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/netbox /etc/nginx/sites-enabled/netbox
 ```
 ---  
-Настроить Netbox можно в браузере по указанному адресу и номеру порта, также необходимо указать имя созданного суперпользователя и пароль.  
-В веб-интерфейсе был создан сайт, мануфактура, тип устройства, функция устройства, а далее само устройство – chr1 и CHR2. Для указания IP-адресов устройств необходимо было создать интерфейсы и IP-адреса. Занесенные в Netbox устройства:  
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/Netbox_devices.jpeg)  
-Далее для работы с Netbox через Ansible нужно было устонавить модуль netbox.netbox командой:
+###Настройка Netbox в браузере.  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/4.jpg?raw=true">  
+</p>  
+В Netbox Был создан сайт, сами устройства – chr1 и CHR2 и интерфейсы с IP-адресами.
+
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/6.jpg?raw=true">  
+</p>  
+
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/5.PNG?raw=true">  
+</p>  
+
+И создаем API-токен для дальнейшего задания:  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/5-2.PNG?raw=true">  
+</p>  
+
+
+Работа с Ansible. Установка netbox.netbox
 ```
 ansible-galaxy collection install netbox.netbox
 ```
-Для сохранения всех данных из Netbox в отдельный файл был создан inventory-файл, в котром был указан плагин, адрес netbox, токен (предварительно создвнный через веб-интерфейс):
+Создаем inventory-файл для сохранения всех данных
 ```
 plugin: netbox.netbox.nb_inventory
 api_endpoint: http://130.193.42.42:8080/
-token: созданный_токен
+token: "токен"
 validate_certs: False
 config_context: False
 interfaces: True
 ```
-Вся информация была сохранена в файл nb_inventory.yml с помощью команды:
+Сохранение данных в nb_inventory.yml
 ```
 ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
 ```
-Далее был написан сценарий для настройки CHR на основе данных из Netbox. Для этого полученный файл был изменен: в него добавлены переменные для подключения к устройствам из файла прошлой лабораторной работы, а также группа роутеров была названа devices вместо указанного по умолчанию ungrouped. Измененный файл: [inventory.yml](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/nb_inventory.yml).  
-В playbook были прописаны команды по изменению имени устройства на имя, указанное в Netbox,  а также по добавлению IP-адреса на устройство (адрес, выданный VPN):
+
+Сценарий для настройки CHR на основе Netbox. В полученный файл добавляем переменные для подключения к устройствам. 
+Измененный файл: [inventory.yml](https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/nb_inventory.yml).  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/13.PNG?raw=true">  
+</p> 
+
+С помощью playbook изменяем имя, а также добавляем IP-адреса на устройство:
 ```
 - name: Configuration
   hosts: devices
@@ -140,9 +163,13 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
         - /interface bridge add name="{{interfaces[1].display}}"
         - /ip address add address="{{interfaces[1].ip_addresses[0].address}}" interface="{{interfaces[1].display}}"
 ```
-Обе таски были успешно выполнены, как можно увидеть ниже, имена устройств изменились (раньше они назывались MikroTik), а также добавились адреса на новый созданный интерфейс:  
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2.jpg)  
-Далее playbook был изменен для того, чтобы собрать серийный номер каждого устройства и внести его в Netbox:  
+После запуска playbook изменения успешно выполнены. Имена устройств изменились, а также добавились адреса на новый созданный интерфейс:  
+<p align="center">
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/7.jpg?raw=true"> 
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/7.jpg?raw=true">  
+</p> 
+
+Измененный playbok для сбора серийных номеров устройств и внесении их в Netbox
 ```
 - name: Serial Numbers
   hosts: devices
@@ -162,27 +189,12 @@ ansible-inventory -v --list -y -i netbox_inventory.yml > nb_inventory.yml
         state: present
         validate_certs: False
 ```
-Для выполнения плэйбука потребовалось установить дополнительный модуль python3-pynetbox. После этого таски успешно выполнились. В веб-интерфейсе Netbox можно увидеть добавленный серийный номер для каждого CHR:  
-![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/chr1_sn.jpg) ![.](https://github.com/OlgaGladushko/2023_2024-network_programming-k34202-gladushko_o_v/blob/main/lab3/imgs/CHR2_sn.jpg)  
-### Вывод  
-В ходе лабораторной работы была собрана информация об устройствах и сохранена в отдельном файле с помощью Ansible и Netbox, а также была произведена настройка CHR на основе собранных данных.
-
-
-
-
-
-
-
-
-
-
-
-
-# Схема сети   
+После запуска playbook в Netbox можно увидеть добавленный серийный номер для каждого CHR:  
 <p align="center">
-<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab02/images/12.drawio.png?raw=true" width="400" heidth = '300'>  
-</p>  
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/10.jpg?raw=true"> 
+<img src="https://github.com/Vladkilinichh/2023_2024-network_programming-k34212-Kilinich_V_A/blob/main/lab03/images/11.jpg?raw=true">  
+</p>
 
 ---  
-# Вывод
-В ходе лабораторной работы были настроены CHR с помощью ansible. Были созданы два файла: inventory-файл и playbook. На роутерах были настроены: логин/пароль для нового пользователя, NTP client, ospf с указанием router id, а также были собраны данные настройки роутеров.
+### Вывод  
+В ходе лабораторной работы была собрана информация об устройствах и сохранена в отдельном файле с помощью Ansible и Netbox, а также была произведена настройка CHR на основе собранных данных.
